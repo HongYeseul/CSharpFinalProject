@@ -97,15 +97,46 @@ namespace CSharpFinalProject
             switch (selectSearch)
             {
                 case Search.닉네임오름차순:
-                    Console.WriteLine("닉네임 오름차순");
+                    Console.WriteLine("닉네임 오름차순 정렬");
+                    var lista = from correct in listFriends
+                                orderby correct.Name
+                                select correct;
+
+                    // 리스트 초기화
+                    listBoxFriends.Items.Clear();
+                    listBoxFriends.Items.Add(String.Format(stdDetails, "닉네임", "아이디", "나이", "친한친구"));
+                    foreach (var a in lista)
+                    {
+                        listBoxFriends.Items.Add(String.Format(stdDetails, a.Name, a.Id, a.Age.ToString(), a.BestFriend.ToString()));
+                    }
                     break;
 
                 case Search.나이오름차순:
                     Console.WriteLine("나이 오름차순");
-
+                    var listb = from correct in listFriends
+                                orderby correct.Age
+                                select correct;
+                    // 리스트 초기화
+                    listBoxFriends.Items.Clear();
+                    listBoxFriends.Items.Add(String.Format(stdDetails, "닉네임", "아이디", "나이", "친한친구"));
+                    foreach (var a in listb)
+                    {
+                        listBoxFriends.Items.Add(String.Format(stdDetails, a.Name, a.Id, a.Age.ToString(), a.BestFriend.ToString()));
+                    }
                     break;
+
                 case Search.친한친구:
                     Console.WriteLine("친한친구 유무");
+                    var listc = from correct in listFriends
+                                where correct.BestFriend == true
+                                select correct;
+                    //리스트 초기화
+                    listBoxFriends.Items.Clear();
+                    listBoxFriends.Items.Add(String.Format(stdDetails, "닉네임", "아이디", "나이", "친한친구"));
+                    foreach (var a in listc)
+                    {
+                        listBoxFriends.Items.Add(String.Format(stdDetails, a.Name, a.Id, a.Age.ToString(), a.BestFriend.ToString()));
+                    }
                     break;
             }
         }
