@@ -156,15 +156,28 @@ namespace CSharpFinalProject
         }
 
         DateTime dtDelayStart;
+        sting obj = new sting();
         private void btnClickFriend_Click(object sender, EventArgs e)
         {
-            //찌르기 버튼을 누르면 몇 번 찔렀다는 걸 잠시 띄우고 사라지게 할 수 있는 코드
-            labelTest.Visible = true;
+            //////////////// 스레드 사용해서 찌르기 버튼 사용하기
+            Console.WriteLine(stingNum.Value.ToString());
+            
+            int a = Int32.Parse(stingNum.Value.ToString());
+            Thread[] th = new Thread[a];
 
-            dtDelayStart = DateTime.Now;
-            DelaySystem(5000);
+            for(int i =0; i< a; i++)
+            {
+                th[i] = new Thread(new ThreadStart(obj.numberCount));
+                //Console.WriteLine("HELLO");
+            }
 
-            labelTest.Visible = false;
+            for (int i=0; i<a; i++)
+            {
+                th[i].Start();
+                //Console.WriteLine("찌르기");
+            }
+
+            
         }
 
         private void DelaySystem(int MS)
@@ -192,6 +205,36 @@ namespace CSharpFinalProject
         {
             login_form.Show();
             this.Hide();
+        }
+
+        private void btnStingResult_Click(object sender, EventArgs e)
+        {
+            labelTest.Text = obj.number.ToString() + "번 찌르셨습니다.";
+            //찌르기 버튼을 누르면 몇 번 찔렀다는 걸 잠시 띄우고 사라지게 할 수 있는 코드
+            labelTest.Visible = true;
+
+            dtDelayStart = DateTime.Now;
+            DelaySystem(3000);
+
+            labelTest.Visible = false;
+            obj.number = 0;
+        }
+    }
+
+    class sting
+    {
+        public int number = 0;
+
+        public void numberCount()
+        {
+            lock (this)
+            {
+                Console.WriteLine("1증가 시키기");
+                Console.WriteLine("증가 전" + number);
+                number++;
+                Console.WriteLine("증가 후 " + number);
+                //return number;
+            }
         }
     }
 }
