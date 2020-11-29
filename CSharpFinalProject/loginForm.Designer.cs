@@ -37,7 +37,7 @@
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(76, 162);
+            this.btnLogin.Location = new System.Drawing.Point(78, 151);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 0;
@@ -47,14 +47,14 @@
             // 
             // txtId
             // 
-            this.txtId.Location = new System.Drawing.Point(89, 69);
+            this.txtId.Location = new System.Drawing.Point(91, 58);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(100, 21);
             this.txtId.TabIndex = 1;
             // 
             // txtPw
             // 
-            this.txtPw.Location = new System.Drawing.Point(89, 108);
+            this.txtPw.Location = new System.Drawing.Point(91, 97);
             this.txtPw.Name = "txtPw";
             this.txtPw.PasswordChar = '*';
             this.txtPw.Size = new System.Drawing.Size(100, 21);
@@ -63,7 +63,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(35, 75);
+            this.label1.Location = new System.Drawing.Point(37, 64);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
             this.label1.TabIndex = 3;
@@ -72,7 +72,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(31, 113);
+            this.label2.Location = new System.Drawing.Point(33, 102);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
             this.label2.TabIndex = 4;
@@ -82,7 +82,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(239, 258);
+            this.ClientSize = new System.Drawing.Size(239, 218);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPw);

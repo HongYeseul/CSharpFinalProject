@@ -17,6 +17,7 @@ namespace CSharpFinalProject
     {
         loginForm login_form;
         int idNum;
+        string name;
         List<Friend> listFriends = new List<Friend>();
         String stdDetails = "{0, -10}{1, 0}{2, 10}{3, 15}";
 
@@ -57,22 +58,36 @@ namespace CSharpFinalProject
 
             for(int i=0; i < idNum; i++)
             {
-                string name = srInfo.ReadLine();
+                name = srInfo.ReadLine();
                 Console.WriteLine(name);
-                labelName.Text = name;
             }
+            labelName.Text = name;
             srInfo.Close();
 
 
             //저장되어 있는 글 불러오기
-            StreamReader srContent = new StreamReader(new FileStream("content.txt", FileMode.OpenOrCreate));
-
-            while(srContent.EndOfStream == false)
+            if (name == "로렘")
             {
-                txtContent.Text += srContent.ReadLine();
-                txtContent.Text += "\n";
+                StreamReader srContent = new StreamReader(new FileStream("content.txt", FileMode.OpenOrCreate));
+
+                while (srContent.EndOfStream == false)
+                {
+                    txtContent.Text += srContent.ReadLine();
+                    txtContent.Text += "\n";
+                }
+                srContent.Close();
             }
-            srContent.Close();
+            else if(name == "유저2")
+            {
+                StreamReader srContent = new StreamReader(new FileStream("content2.txt", FileMode.OpenOrCreate));
+
+                while (srContent.EndOfStream == false)
+                {
+                    txtContent.Text += srContent.ReadLine();
+                    txtContent.Text += "\n";
+                }
+                srContent.Close();
+            }
 
             //리스트에 친구 목록 띄우기
             listBoxFriends.Items.Add(String.Format(stdDetails, "닉네임", "아이디", "나이", "친한친구"));
@@ -85,9 +100,18 @@ namespace CSharpFinalProject
         private void btnWrite_Click(object sender, EventArgs e)
         {
             //내용 저장하기
-            StreamWriter swContent = new StreamWriter(new FileStream("content.txt", FileMode.OpenOrCreate));
-            swContent.Write(txtContent.Text);
-            swContent.Close();
+            if(name == "로렘")
+            {
+                StreamWriter swContent = new StreamWriter(new FileStream("content.txt", FileMode.OpenOrCreate));
+                swContent.Write(txtContent.Text);
+                swContent.Close();
+            }
+            else if(name == "유저2")
+            {
+                StreamWriter swContent = new StreamWriter(new FileStream("content2.txt", FileMode.OpenOrCreate));
+                swContent.Write(txtContent.Text);
+                swContent.Close();
+            }
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
@@ -225,6 +249,12 @@ namespace CSharpFinalProject
 
             labelTest.Visible = false;
             obj.number = 0;
+        }
+
+        private void btnChat_Click(object sender, EventArgs e)
+        {
+            chattingForm nf = new chattingForm(name);
+            nf.Show();
         }
     }
 

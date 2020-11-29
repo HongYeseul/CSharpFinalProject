@@ -122,9 +122,9 @@
             this.groupBox1.Controls.Add(this.radioBtnBF);
             this.groupBox1.Controls.Add(this.radioBtnAge);
             this.groupBox1.Controls.Add(this.radioBtnNick);
-            this.groupBox1.Location = new System.Drawing.Point(18, 221);
+            this.groupBox1.Location = new System.Drawing.Point(12, 290);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(292, 85);
+            this.groupBox1.Size = new System.Drawing.Size(307, 85);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "친구리스트";
@@ -169,7 +169,7 @@
             // 
             this.listBoxFriends.FormattingEnabled = true;
             this.listBoxFriends.ItemHeight = 12;
-            this.listBoxFriends.Location = new System.Drawing.Point(23, 312);
+            this.listBoxFriends.Location = new System.Drawing.Point(29, 381);
             this.listBoxFriends.Name = "listBoxFriends";
             this.listBoxFriends.Size = new System.Drawing.Size(275, 136);
             this.listBoxFriends.TabIndex = 0;
@@ -232,9 +232,9 @@
             this.찌르기.Controls.Add(this.labelTest);
             this.찌르기.Controls.Add(this.label1);
             this.찌르기.Controls.Add(this.stingNum);
-            this.찌르기.Location = new System.Drawing.Point(35, 457);
+            this.찌르기.Location = new System.Drawing.Point(12, 221);
             this.찌르기.Name = "찌르기";
-            this.찌르기.Size = new System.Drawing.Size(248, 63);
+            this.찌르기.Size = new System.Drawing.Size(307, 63);
             this.찌르기.TabIndex = 14;
             this.찌르기.TabStop = false;
             this.찌르기.Text = "찌르기";
@@ -247,12 +247,13 @@
             this.btnChat.TabIndex = 15;
             this.btnChat.Text = "채팅하기";
             this.btnChat.UseVisualStyleBackColor = true;
+            this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 585);
+            this.ClientSize = new System.Drawing.Size(340, 531);
             this.Controls.Add(this.btnChat);
             this.Controls.Add(this.찌르기);
             this.Controls.Add(this.groupBox1);

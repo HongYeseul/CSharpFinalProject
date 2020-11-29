@@ -54,6 +54,9 @@ namespace CSharpFinalProject
             {
                 MessageBox.Show("로그인 정보를 다시 확인 해 주세요.");
             }
+
+            txtId.Text = "";
+            txtPw.Text = "";
         }
     }
 }
