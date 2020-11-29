@@ -64,6 +64,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="calcForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="calcForm.Designer.cs">
+      <DependentUpon>calcForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="chattingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="calcForm.resx">
+      <DependentUpon>calcForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="chattingForm.resx">
       <DependentUpon>chattingForm.cs</DependentUpon>
     </EmbeddedResource>

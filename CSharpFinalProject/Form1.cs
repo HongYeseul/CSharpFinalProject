@@ -25,7 +25,8 @@ namespace CSharpFinalProject
         {
             닉네임오름차순,
             나이오름차순,
-            친한친구
+            친한친구,
+            스무살이하
         }
         private Search selectSearch;
 
@@ -45,13 +46,13 @@ namespace CSharpFinalProject
         {
             listFriends.Add(new Friend("Onion", "deliciousOnion", 15, false));
             listFriends.Add(new Friend("Chemi", "Queen_Chemi", 17, false));
-            listFriends.Add(new Friend("mikong", "GoMiko45", 19, false));
+            listFriends.Add(new Friend("mikong", "GoMiko45", 19, true));
             listFriends.Add(new Friend("Nacho", "Nacho_0101", 31, false));
             listFriends.Add(new Friend("Onga", "OngChan99", 22, false));
             listFriends.Add(new Friend("Sara", "OwO_OwO", 21, false));
-            listFriends.Add(new Friend("bunny", "Rabbit12", 28, false));
-            listFriends.Add(new Friend("choco", "ChocoChan", 17, false));
-            listFriends.Add(new Friend("Mitte", "mitteLOVE", 21, false));
+            listFriends.Add(new Friend("bunny", "Rabbit12", 28, true));
+            listFriends.Add(new Friend("choco", "ChocoChan", 17, true));
+            listFriends.Add(new Friend("Mitte", "mitteLOVE", 21, true));
 
             //유저 정보 불러오기
             StreamReader srInfo = new StreamReader(new FileStream("userInfo.txt", FileMode.OpenOrCreate));
@@ -93,7 +94,7 @@ namespace CSharpFinalProject
             listBoxFriends.Items.Add(String.Format(stdDetails, "닉네임", "아이디", "나이", "친한친구"));
             foreach (Friend n in listFriends)
             {
-                listBoxFriends.Items.Add(String.Format(stdDetails, n.Name, n.Id, n.Age.ToString(), n.BestFriend.ToString()));
+                listBoxFriends.Items.Add(String.Format(stdDetails, n.returnName(), n.returnId(), n.returnAge(), n.BestFriend.ToString()));
             }
         }
 
@@ -123,14 +124,14 @@ namespace CSharpFinalProject
         {
             // 라디오 버튼 클릭 -> 친구 목록에서 찾아서 리스트박스에 띄우기
             Console.WriteLine("Click");
-            if (radioBtnAge.Checked == false && radioBtnBF.Checked == false && radioBtnNick.Checked == false)
+            if (radioBtnAge.Checked == false && radioBtnBF.Checked == false && radioBtnNick.Checked == false && radioBtnAge20.Checked == false)
                 return;
             switch (selectSearch)
             {
                 case Search.닉네임오름차순:
                     Console.WriteLine("닉네임 오름차순 정렬");
                     var lista = from correct in listFriends
-                                orderby correct.Name
+                                orderby correct.returnName()
                                 select correct;
 
                     // 리스트 초기화
@@ -138,21 +139,21 @@ namespace CSharpFinalProject
                     listBoxFriends.Items.Add(String.Format(stdDetails, "닉네임", "아이디", "나이", "친한친구"));
                     foreach (var a in lista)
                     {
-                        listBoxFriends.Items.Add(String.Format(stdDetails, a.Name, a.Id, a.Age.ToString(), a.BestFriend.ToString()));
+                        listBoxFriends.Items.Add(String.Format(stdDetails, a.returnName(), a.returnId(), a.returnAge().ToString(), a.BestFriend.ToString()));
                     }
                     break;
 
                 case Search.나이오름차순:
                     Console.WriteLine("나이 오름차순");
                     var listb = from correct in listFriends
-                                orderby correct.Age
+                                orderby correct.returnAge()
                                 select correct;
                     // 리스트 초기화
                     listBoxFriends.Items.Clear();
                     listBoxFriends.Items.Add(String.Format(stdDetails, "닉네임", "아이디", "나이", "친한친구"));
                     foreach (var a in listb)
                     {
-                        listBoxFriends.Items.Add(String.Format(stdDetails, a.Name, a.Id, a.Age.ToString(), a.BestFriend.ToString()));
+                        listBoxFriends.Items.Add(String.Format(stdDetails, a.returnName(), a.returnId(), a.returnAge().ToString(), a.BestFriend.ToString()));
                     }
                     break;
 
@@ -166,7 +167,31 @@ namespace CSharpFinalProject
                     listBoxFriends.Items.Add(String.Format(stdDetails, "닉네임", "아이디", "나이", "친한친구"));
                     foreach (var a in listc)
                     {
-                        listBoxFriends.Items.Add(String.Format(stdDetails, a.Name, a.Id, a.Age.ToString(), a.BestFriend.ToString()));
+                        listBoxFriends.Items.Add(String.Format(stdDetails, a.returnName(), a.returnId(), a.returnAge().ToString(), a.BestFriend.ToString()));
+                    }
+                    break;
+                case Search.스무살이하:
+                    Console.WriteLine("스무살 이하인 친구 찾기");
+                    var listd = from correct in listFriends
+                                group correct by Int32.Parse(correct.returnAge()) <= 20 into g
+                                select new
+                                {
+                                    GroupKey = g.Key,
+                                    Correct = g
+                                };
+
+                    //리스트 초기화
+                    listBoxFriends.Items.Clear();
+                    listBoxFriends.Items.Add(String.Format(stdDetails, "닉네임", "아이디", "나이", "친한친구"));
+                    foreach (var Group in listd)
+                    {
+                        if(Group.GroupKey)
+                        {
+                            foreach (var v in Group.Correct)
+                            {
+                                listBoxFriends.Items.Add(String.Format(stdDetails, v.returnName(), v.returnId(), v.returnAge().ToString(), v.BestFriend.ToString()));
+                            }
+                        }
                     }
                     break;
             }
@@ -184,6 +209,10 @@ namespace CSharpFinalProject
         private void radioBtnBF_CheckedChanged(object sender, EventArgs e)
         {
             this.selectSearch = Search.친한친구;
+        }
+        private void radioBtnAge20_CheckedChanged(object sender, EventArgs e)
+        {
+            this.selectSearch = Search.스무살이하;
         }
 
         DateTime dtDelayStart;
@@ -254,6 +283,12 @@ namespace CSharpFinalProject
         private void btnChat_Click(object sender, EventArgs e)
         {
             chattingForm nf = new chattingForm(name);
+            nf.Show();
+        }
+
+        private void btnCalc_Click(object sender, EventArgs e)
+        {
+            calcForm nf = new calcForm();
             nf.Show();
         }
     }

@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioBtnAge20 = new System.Windows.Forms.RadioButton();
             this.radioBtnBF = new System.Windows.Forms.RadioButton();
             this.radioBtnAge = new System.Windows.Forms.RadioButton();
             this.radioBtnNick = new System.Windows.Forms.RadioButton();
@@ -46,6 +47,7 @@
             this.btnStingResult = new System.Windows.Forms.Button();
             this.찌르기 = new System.Windows.Forms.GroupBox();
             this.btnChat = new System.Windows.Forms.Button();
+            this.btnCalc = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stingNum)).BeginInit();
             this.찌르기.SuspendLayout();
@@ -119,15 +121,28 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.radioBtnAge20);
             this.groupBox1.Controls.Add(this.radioBtnBF);
             this.groupBox1.Controls.Add(this.radioBtnAge);
             this.groupBox1.Controls.Add(this.radioBtnNick);
             this.groupBox1.Location = new System.Drawing.Point(12, 290);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(307, 85);
+            this.groupBox1.Size = new System.Drawing.Size(307, 108);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "친구리스트";
+            // 
+            // radioBtnAge20
+            // 
+            this.radioBtnAge20.AutoSize = true;
+            this.radioBtnAge20.Location = new System.Drawing.Point(17, 86);
+            this.radioBtnAge20.Name = "radioBtnAge20";
+            this.radioBtnAge20.Size = new System.Drawing.Size(143, 16);
+            this.radioBtnAge20.TabIndex = 5;
+            this.radioBtnAge20.TabStop = true;
+            this.radioBtnAge20.Text = "20세 이하인 친구 찾기";
+            this.radioBtnAge20.UseVisualStyleBackColor = true;
+            this.radioBtnAge20.CheckedChanged += new System.EventHandler(this.radioBtnAge20_CheckedChanged);
             // 
             // radioBtnBF
             // 
@@ -169,7 +184,7 @@
             // 
             this.listBoxFriends.FormattingEnabled = true;
             this.listBoxFriends.ItemHeight = 12;
-            this.listBoxFriends.Location = new System.Drawing.Point(29, 381);
+            this.listBoxFriends.Location = new System.Drawing.Point(29, 404);
             this.listBoxFriends.Name = "listBoxFriends";
             this.listBoxFriends.Size = new System.Drawing.Size(275, 136);
             this.listBoxFriends.TabIndex = 0;
@@ -249,11 +264,22 @@
             this.btnChat.UseVisualStyleBackColor = true;
             this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
             // 
+            // btnCalc
+            // 
+            this.btnCalc.Location = new System.Drawing.Point(168, 8);
+            this.btnCalc.Name = "btnCalc";
+            this.btnCalc.Size = new System.Drawing.Size(75, 23);
+            this.btnCalc.TabIndex = 16;
+            this.btnCalc.Text = "계산기";
+            this.btnCalc.UseVisualStyleBackColor = true;
+            this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 531);
+            this.ClientSize = new System.Drawing.Size(340, 552);
+            this.Controls.Add(this.btnCalc);
             this.Controls.Add(this.btnChat);
             this.Controls.Add(this.찌르기);
             this.Controls.Add(this.groupBox1);
@@ -299,6 +325,8 @@
         private System.Windows.Forms.Button btnStingResult;
         private System.Windows.Forms.GroupBox 찌르기;
         private System.Windows.Forms.Button btnChat;
+        private System.Windows.Forms.RadioButton radioBtnAge20;
+        private System.Windows.Forms.Button btnCalc;
     }
 }
 
