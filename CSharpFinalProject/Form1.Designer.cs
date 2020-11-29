@@ -31,14 +31,12 @@
             this.labelName = new System.Windows.Forms.Label();
             this.txtContent = new System.Windows.Forms.RichTextBox();
             this.btnWrite = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnClickFriend = new System.Windows.Forms.Button();
             this.btnFriends = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogout = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.radioBtnBF = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.radioBtnAge = new System.Windows.Forms.RadioButton();
             this.radioBtnNick = new System.Windows.Forms.RadioButton();
             this.listBoxFriends = new System.Windows.Forms.ListBox();
@@ -47,6 +45,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnStingResult = new System.Windows.Forms.Button();
             this.찌르기 = new System.Windows.Forms.GroupBox();
+            this.btnChat = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.stingNum)).BeginInit();
             this.찌르기.SuspendLayout();
@@ -79,18 +78,9 @@
             this.btnWrite.UseVisualStyleBackColor = true;
             this.btnWrite.Click += new System.EventHandler(this.btnWrite_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(87, 192);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
             // btnClickFriend
             // 
-            this.btnClickFriend.Location = new System.Drawing.Point(168, 192);
+            this.btnClickFriend.Location = new System.Drawing.Point(87, 192);
             this.btnClickFriend.Name = "btnClickFriend";
             this.btnClickFriend.Size = new System.Drawing.Size(75, 23);
             this.btnClickFriend.TabIndex = 4;
@@ -100,7 +90,7 @@
             // 
             // btnFriends
             // 
-            this.btnFriends.Location = new System.Drawing.Point(249, 192);
+            this.btnFriends.Location = new System.Drawing.Point(168, 192);
             this.btnFriends.Name = "btnFriends";
             this.btnFriends.Size = new System.Drawing.Size(75, 23);
             this.btnFriends.TabIndex = 5;
@@ -130,12 +120,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.radioBtnBF);
-            this.groupBox1.Controls.Add(this.radioButton4);
             this.groupBox1.Controls.Add(this.radioBtnAge);
             this.groupBox1.Controls.Add(this.radioBtnNick);
-            this.groupBox1.Location = new System.Drawing.Point(6, 221);
+            this.groupBox1.Location = new System.Drawing.Point(18, 221);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(318, 110);
+            this.groupBox1.Size = new System.Drawing.Size(292, 85);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "친구리스트";
@@ -151,17 +140,6 @@
             this.radioBtnBF.Text = "친한친구 찾기";
             this.radioBtnBF.UseVisualStyleBackColor = true;
             this.radioBtnBF.CheckedChanged += new System.EventHandler(this.radioBtnBF_CheckedChanged);
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(17, 86);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(92, 16);
-            this.radioButton4.TabIndex = 3;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "radioButton4";
-            this.radioButton4.UseVisualStyleBackColor = true;
             // 
             // radioBtnAge
             // 
@@ -191,9 +169,9 @@
             // 
             this.listBoxFriends.FormattingEnabled = true;
             this.listBoxFriends.ItemHeight = 12;
-            this.listBoxFriends.Location = new System.Drawing.Point(23, 348);
+            this.listBoxFriends.Location = new System.Drawing.Point(23, 312);
             this.listBoxFriends.Name = "listBoxFriends";
-            this.listBoxFriends.Size = new System.Drawing.Size(275, 208);
+            this.listBoxFriends.Size = new System.Drawing.Size(275, 136);
             this.listBoxFriends.TabIndex = 0;
             // 
             // labelTest
@@ -254,18 +232,28 @@
             this.찌르기.Controls.Add(this.labelTest);
             this.찌르기.Controls.Add(this.label1);
             this.찌르기.Controls.Add(this.stingNum);
-            this.찌르기.Location = new System.Drawing.Point(347, 39);
+            this.찌르기.Location = new System.Drawing.Point(35, 457);
             this.찌르기.Name = "찌르기";
             this.찌르기.Size = new System.Drawing.Size(248, 63);
             this.찌르기.TabIndex = 14;
             this.찌르기.TabStop = false;
             this.찌르기.Text = "찌르기";
             // 
+            // btnChat
+            // 
+            this.btnChat.Location = new System.Drawing.Point(250, 192);
+            this.btnChat.Name = "btnChat";
+            this.btnChat.Size = new System.Drawing.Size(75, 23);
+            this.btnChat.TabIndex = 15;
+            this.btnChat.Text = "채팅하기";
+            this.btnChat.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 585);
+            this.ClientSize = new System.Drawing.Size(340, 585);
+            this.Controls.Add(this.btnChat);
             this.Controls.Add(this.찌르기);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnLogout);
@@ -273,7 +261,6 @@
             this.Controls.Add(this.btnFriends);
             this.Controls.Add(this.listBoxFriends);
             this.Controls.Add(this.btnClickFriend);
-            this.Controls.Add(this.button2);
             this.Controls.Add(this.btnWrite);
             this.Controls.Add(this.txtContent);
             this.Controls.Add(this.labelName);
@@ -296,7 +283,6 @@
         private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.RichTextBox txtContent;
         private System.Windows.Forms.Button btnWrite;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnClickFriend;
         private System.Windows.Forms.Button btnFriends;
         private System.Windows.Forms.Label label2;
@@ -304,7 +290,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ListBox listBoxFriends;
         private System.Windows.Forms.RadioButton radioBtnBF;
-        private System.Windows.Forms.RadioButton radioButton4;
         private System.Windows.Forms.RadioButton radioBtnAge;
         private System.Windows.Forms.RadioButton radioBtnNick;
         private System.Windows.Forms.Label labelTest;
@@ -312,6 +297,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnStingResult;
         private System.Windows.Forms.GroupBox 찌르기;
+        private System.Windows.Forms.Button btnChat;
     }
 }
 

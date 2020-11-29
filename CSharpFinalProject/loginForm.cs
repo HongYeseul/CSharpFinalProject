@@ -23,21 +23,32 @@ namespace CSharpFinalProject
             StreamReader srID = new StreamReader(new FileStream("id.txt", FileMode.OpenOrCreate));
             StreamReader srPW = new StreamReader(new FileStream("password.txt", FileMode.OpenOrCreate));
 
-
             string id = srID.ReadLine();
+            string id2 = srID.ReadLine();
             Console.WriteLine(id);
             string pw = srPW.ReadLine();
+            string pw2 = srPW.ReadLine();
             Console.WriteLine(pw);
 
             srID.Close();
             srPW.Close();
 
-            if (txtId.Text == id && txtPw.Text == pw)
+            if (txtId.Text == id && txtPw.Text == pw || txtId.Text == id2 && txtPw.Text == pw2)
             {
                 MessageBox.Show("정상적으로 로그인 되었습니다.");
-                Form1 frm = new Form1(this);
-                frm.Show();
-                this.Hide();
+
+                if(txtId.Text == id && txtPw.Text == pw)
+                {
+                    Form1 frm = new Form1(this, 1);
+                    frm.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    Form1 frm = new Form1(this, 2);
+                    frm.Show();
+                    this.Hide();
+                }
             }
             else
             {

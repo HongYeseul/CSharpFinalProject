@@ -9,12 +9,14 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using myPeopleDLL;
 
 namespace CSharpFinalProject
 {
     public partial class Form1 : Form
     {
         loginForm login_form;
+        int idNum;
         List<Friend> listFriends = new List<Friend>();
         String stdDetails = "{0, -10}{1, 0}{2, 10}{3, 15}";
 
@@ -31,10 +33,11 @@ namespace CSharpFinalProject
             InitializeComponent();
         }
 
-        public Form1(loginForm login_form)
+        public Form1(loginForm login_form, int num)
         {
             InitializeComponent();
             this.login_form = login_form;
+            this.idNum = num;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -52,10 +55,14 @@ namespace CSharpFinalProject
             //유저 정보 불러오기
             StreamReader srInfo = new StreamReader(new FileStream("userInfo.txt", FileMode.OpenOrCreate));
 
-            string name = srInfo.ReadLine();
-            Console.WriteLine(name);
+            for(int i=0; i < idNum; i++)
+            {
+                string name = srInfo.ReadLine();
+                Console.WriteLine(name);
+                labelName.Text = name;
+            }
             srInfo.Close();
-            labelName.Text = name;
+
 
             //저장되어 있는 글 불러오기
             StreamReader srContent = new StreamReader(new FileStream("content.txt", FileMode.OpenOrCreate));

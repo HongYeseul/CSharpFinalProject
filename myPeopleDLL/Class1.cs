@@ -4,17 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CSharpFinalProject
+namespace myPeopleDLL
 {
-    class People
+    public class people
     {
         public string Name { get; set; }
         public string Id { get; set; }
         public int Age { get; set; }
-        public People() { }
+        public people() { }
     }
 
-    class User : People
+    public class User : people
     {
         public string Password { get; set; }
 
@@ -29,7 +29,7 @@ namespace CSharpFinalProject
         public User() { }
     }
 
-    class Friend : People
+    public class Friend : people
     {
         public bool BestFriend { get; set; }
 
