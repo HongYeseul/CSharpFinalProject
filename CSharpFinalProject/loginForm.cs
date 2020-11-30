@@ -39,13 +39,13 @@ namespace CSharpFinalProject
 
                 if(txtId.Text == id && txtPw.Text == pw)
                 {
-                    Form1 frm = new Form1(this, 1);
+                    Form1 frm = new Form1(this, 1, id, pw);
                     frm.Show();
                     this.Hide();
                 }
                 else
                 {
-                    Form1 frm = new Form1(this, 2);
+                    Form1 frm = new Form1(this, 2, id, pw);
                     frm.Show();
                     this.Hide();
                 }

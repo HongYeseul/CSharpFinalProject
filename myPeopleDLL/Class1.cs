@@ -15,12 +15,12 @@ namespace myPeopleDLL
 
     public class User : people
     {
-        string name;
-        string id;
-        int age;
-        string pw;
+        public string name;
+        public string id;
+        public int age;
         public string Password { get; set; }
 
+        public User() { }
 
         public User(string name, string id, int age, string pw)
         {

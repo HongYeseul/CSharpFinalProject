@@ -20,6 +20,7 @@ namespace CSharpFinalProject
         string name;
         List<Friend> listFriends = new List<Friend>();
         String stdDetails = "{0, -10}{1, 0}{2, 10}{3, 15}";
+        User me = new User();
 
         enum Search
         {
@@ -35,11 +36,15 @@ namespace CSharpFinalProject
             InitializeComponent();
         }
 
-        public Form1(loginForm login_form, int num)
+        public Form1(loginForm login_form, int num, string id, string pw)
         {
             InitializeComponent();
             this.login_form = login_form;
             this.idNum = num;
+            // 자신을 나타내는 me 객체에 값 초기화
+            me.id = id;
+            me.Password = pw;
+            me.age = 22;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -59,15 +64,15 @@ namespace CSharpFinalProject
 
             for(int i=0; i < idNum; i++)
             {
-                name = srInfo.ReadLine();
-                Console.WriteLine(name);
+                me.name = srInfo.ReadLine();
+                Console.WriteLine(me.name);
             }
-            labelName.Text = name;
+            labelName.Text = me.name;
             srInfo.Close();
 
 
             //저장되어 있는 글 불러오기
-            if (name == "로렘")
+            if (me.name == "로렘")
             {
                 StreamReader srContent = new StreamReader(new FileStream("content.txt", FileMode.OpenOrCreate));
 
@@ -78,7 +83,7 @@ namespace CSharpFinalProject
                 }
                 srContent.Close();
             }
-            else if(name == "유저2")
+            else if(me.name == "유저2")
             {
                 StreamReader srContent = new StreamReader(new FileStream("content2.txt", FileMode.OpenOrCreate));
 
@@ -101,13 +106,13 @@ namespace CSharpFinalProject
         private void btnWrite_Click(object sender, EventArgs e)
         {
             //내용 저장하기
-            if(name == "로렘")
+            if(me.name == "로렘")
             {
                 StreamWriter swContent = new StreamWriter(new FileStream("content.txt", FileMode.OpenOrCreate));
                 swContent.Write(txtContent.Text);
                 swContent.Close();
             }
-            else if(name == "유저2")
+            else if(me.name == "유저2")
             {
                 StreamWriter swContent = new StreamWriter(new FileStream("content2.txt", FileMode.OpenOrCreate));
                 swContent.Write(txtContent.Text);
@@ -173,6 +178,7 @@ namespace CSharpFinalProject
                 case Search.스무살이하:
                     Console.WriteLine("스무살 이하인 친구 찾기");
                     var listd = from correct in listFriends
+                                orderby correct.returnAge() ascending
                                 group correct by Int32.Parse(correct.returnAge()) <= 20 into g
                                 select new
                                 {
