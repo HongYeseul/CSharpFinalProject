@@ -17,7 +17,6 @@ namespace CSharpFinalProject
     {
         loginForm login_form;
         int idNum;
-        string name;
         List<Friend> listFriends = new List<Friend>();
         String stdDetails = "{0, -10}{1, 0}{2, 10}{3, 15}";
         User me = new User();
@@ -288,7 +287,7 @@ namespace CSharpFinalProject
 
         private void btnChat_Click(object sender, EventArgs e)
         {
-            chattingForm nf = new chattingForm(name);
+            chattingForm nf = new chattingForm(me.returnName());
             nf.Show();
         }
 
